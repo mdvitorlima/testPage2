@@ -50,9 +50,14 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     position.coords.speed * 3.6);
 
-    if(position.coords.speed > 0)
+    if(position.coords.speed > 6)
     {
-      alert('Em movimento!');
+      //alert('Em movimento!');
+
+      beep(1000, 80, function () {
+        button.disabled = false;
+      });
+
     }
 };
 
@@ -61,5 +66,46 @@ const startServiceWorker = () => {
     scope: '/testPage2/'
   });
 }
+
+const beep = (function () {
+  var ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
+  var ctx = new ctxClass();
+  return function (duration, type, finishedCallback) {
+
+      duration = +duration;
+
+      // Only 0-4 are valid types.
+      type = (type % 5) || 0;
+
+      if (typeof finishedCallback != "function") {
+          finishedCallback = function () {};
+      }
+
+      var osc = ctx.createOscillator();
+
+      osc.type = type;
+      //osc.type = "sine";
+
+      osc.connect(ctx.destination);
+      if (osc.noteOn) osc.noteOn(0);
+      if (osc.start) osc.start();
+
+      setTimeout(function () {
+          if (osc.noteOff) osc.noteOff(0);
+          if (osc.stop) osc.stop();
+          finishedCallback();
+      }, duration);
+
+  };
+})();
+
+/*document.getElementsByTagName("button")[1].addEventListener("click", function () {
+  var button = this;
+  button.disabled = true;
+  beep(1000, 80, function () {
+      button.disabled = false;
+  });
+
+});*/
 
 startServiceWorker();
