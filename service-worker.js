@@ -9,7 +9,7 @@ addEventListener('install', event => {
 
     await cache.addAll([
       './',
-      './images/speedometer.png'
+      './images/veloc1.jpg'
     ]);
 
     self.skipWaiting();
