@@ -49,6 +49,11 @@ const IniciarWakeLock = () => {
 const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     position.coords.speed * 3.6);
+
+    if(position.coords.speed > 0)
+    {
+      alert('Em movimento!');
+    }
 };
 
 const startServiceWorker = () => {
