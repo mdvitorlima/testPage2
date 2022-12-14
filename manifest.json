@@ -6,9 +6,9 @@
   "theme_color": "#f1f1f1",
   "background_color": "#f1f1f1",
   "icons": [{
-    "src": "/images/veloc1.jpg",
+    "src": "/images/veloc1.png",
     "sizes": "512x512",
-    "type": "image/jpg"
+    "type": "image/png"
   }],
   "display": "standalone"
 }
