@@ -2,11 +2,11 @@
   "name": "Veloc1",
   "short_name": "Veloc",
   "description": "Teste.",
-  "start_url": "/",
+  "start_url": "/testPage2/",
   "theme_color": "#f1f1f1",
   "background_color": "#f1f1f1",
   "icons": [{
-    "src": "/images/veloc1.png",
+    "src": "/testPage2/images/veloc1.png",
     "sizes": "512x512",
     "type": "image/png"
   }],
