@@ -99,13 +99,13 @@ const beep = (function () {
   };
 })();
 
-/*document.getElementsByTagName("button")[1].addEventListener("click", function () {
+ document.getElementsByTagName("button")[1].addEventListener("click", function () {
   var button = this;
   button.disabled = true;
   beep(1000, 80, function () {
       button.disabled = false;
   });
 
-});*/
+});
 
 startServiceWorker();
