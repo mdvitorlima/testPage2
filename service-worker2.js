@@ -1,5 +1,5 @@
-const version = 2018120701;
-const cachePrefix = 'speedometer-';
+const version = 1;
+const cachePrefix = 'veloc-';
 const staticCacheName = `${cachePrefix}static-${version}`;
 const expectedCaches = [staticCacheName];
 
