@@ -3,14 +3,19 @@ const cachePrefix = 'veloc-';
 const staticCacheName = `${cachePrefix}static-${version}`;
 const expectedCaches = [staticCacheName];
 
+var GHPATH = '/testPage2';
+
+var URLS = [    
+  `${GHPATH}/`,
+  `${GHPATH}/index.html`,
+  `${GHPATH}/images/veloc1.png`,
+]
+
 addEventListener('install', event => {
   event.waitUntil((async () => {
     const cache = await caches.open(staticCacheName);
 
-    await cache.addAll([
-      './',
-      './images/veloc1.png'
-    ]);
+    await cache.addAll(URLS);
 
     self.skipWaiting();
   })());
