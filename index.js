@@ -47,15 +47,18 @@ const IniciarWakeLock = () => {
 }
 
 const atualizaPosicao = (position) => {
-  vOpts.dom.readout.textContent = Math.round(
-    position.coords.speed * 3.6);
 
-    if(position.coords.speed > 6)
+  let velocidade = position.coords.speed;
+
+  vOpts.dom.readout.textContent = Math.round(
+    velocidade * 3.6);
+
+    if(velocidade > 0)
     {
       //alert('Em movimento!');
 
-      beep(1000, 80, function () {
-        button.disabled = false;
+      beep(100, 80, function () {
+        //button.disabled = false;
       });
 
     }
@@ -105,6 +108,8 @@ const beep = (function () {
   beep(1000, 80, function () {
       button.disabled = false;
   });
+
+
 
 });
 
