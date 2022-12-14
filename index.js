@@ -52,7 +52,7 @@ const atualizaPosicao = (position) => {
 };
 
 const startServiceWorker = () => {
-  navigator.serviceWorker.register('service-worker.js', {
+  navigator.serviceWorker.register('service-worker2.js', {
     scope: './'
   });
 }
