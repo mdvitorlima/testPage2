@@ -57,7 +57,7 @@ const atualizaPosicao = (position) => {
     {
       //alert('Em movimento!');
 
-      beep(100, 80, function () {
+      beep(1000, 80, function () {
         //button.disabled = false;
       });
 
