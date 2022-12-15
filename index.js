@@ -53,7 +53,7 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
 
-    if(velocidade > 0)
+    if(velocidade > 36)
     {
       //alert('Em movimento!');
 
