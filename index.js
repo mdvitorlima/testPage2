@@ -55,20 +55,24 @@ const atualizaPosicao = (position) => {
 
     if(velocidade > 0)
     {
-      //alert('Em movimento!');
-
-      beep(1000, 80, function () {
-        //button.disabled = false;
-      });
-
+      //beep(1000, 80, function () {});
+      throttle(updateThrottleCount, 3000);
     }
 };
 
-const startServiceWorker = () => {
-  navigator.serviceWorker.register('/testPage2/service-worker2.js', {
-    scope: '/testPage2/'
-  });
-}
+const throttle = (callback, time) => {
+  if (throttlePause) return;
+
+  throttlePause = true;
+  setTimeout(() => {
+    callback();
+    throttlePause = false;
+  }, time);
+};
+
+const updateThrottleCount = () => {
+  beep(1000, 80, function () {});
+};
 
 const beep = (function () {
   var ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
@@ -88,11 +92,11 @@ const beep = (function () {
 
       osc.type = type;
       //osc.type = "sine";
-
+      
       osc.connect(ctx.destination);
       if (osc.noteOn) osc.noteOn(0);
       if (osc.start) osc.start();
-
+      
       setTimeout(function () {
           if (osc.noteOff) osc.noteOff(0);
           if (osc.stop) osc.stop();
@@ -112,5 +116,11 @@ const beep = (function () {
 
 
 });
+
+const startServiceWorker = () => {
+  navigator.serviceWorker.register('/testPage2/service-worker2.js', {
+    scope: '/testPage2/'
+  });
+}
 
 startServiceWorker();
