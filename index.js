@@ -10,6 +10,9 @@ const vOpts = {
   watchId: null,
   wakeLock: null
 };
+
+let throttlePause;
+
 document.querySelector('#inicio').addEventListener('click', (event) => {
   if (vOpts.watchId) {
     navigator.geolocation.clearWatch(vOpts.watchId);
