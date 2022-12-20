@@ -10,6 +10,21 @@ const vOpts = {
   watchId: null,
   wakeLock: null
 };
+
+let throttlePause;
+let velocidadeLimite = 30;
+const throttleRange = document.getElementById("throttle-range");
+const throttleTimeText = document.getElementById("throttle-time");
+
+throttleRange.addEventListener(
+  "input",
+  () => {
+    throttleTimeText.innerHTML = throttleRange.value;
+    velocidadeLimite = throttleRange.value;
+  },
+  false
+);
+
 document.querySelector('#inicio').addEventListener('click', (event) => {
   if (vOpts.watchId) {
     navigator.geolocation.clearWatch(vOpts.watchId);
@@ -53,7 +68,7 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
 
-    if(velocidade > 0)
+    if(velocidade > velocidadeLimite)
     {
       //beep(1000, 80, function () {});
       throttle(updateThrottleCount, 3000);
@@ -70,7 +85,7 @@ const throttle = (callback, time) => {
   }, time);
 };
 
-const updateThrottleCount = () => {
+const updateThrottleCount = async () => {
   beep(1000, 80, function () {});
 };
 
@@ -83,7 +98,7 @@ const beep = (function () {
 
       // Only 0-4 are valid types.
       type = (type % 5) || 0;
-
+      
       if (typeof finishedCallback != "function") {
           finishedCallback = function () {};
       }
@@ -122,5 +137,10 @@ const startServiceWorker = () => {
     scope: '/testPage2/'
   });
 }
+
+/*window.addEventListener('mousemove', (e) => {
+  //alert('oi!!');
+  throttle(updateThrottleCount, 3000);
+});*/
 
 startServiceWorker();
