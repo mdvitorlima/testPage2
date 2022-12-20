@@ -86,6 +86,7 @@ const throttle = (callback, time) => {
 };
 
 const updateThrottleCount = async () => {
+  changeDivStyle();
   beep(1000, 80, function () {});
 };
 
@@ -122,13 +123,13 @@ const beep = (function () {
 })();
 
  document.getElementsByTagName("button")[1].addEventListener("click", function () {
-  var button = this;
+  /*var button = this;
   button.disabled = true;
   beep(1000, 80, function () {
       button.disabled = false;
-  });
+  });*/
 
-
+  changeDivStyle2();
 
 });
 
@@ -143,4 +144,15 @@ const startServiceWorker = () => {
   throttle(updateThrottleCount, 3000);
 });*/
 
+function changeDivStyle(){
+  var element = document.getElementById("myDiv");
+  element.style.backgroundColor = "#00FF00";
+}
+
+function changeDivStyle2(){
+  var element = document.getElementById("myDiv");
+  element.style.backgroundColor = "#FFFFFF";
+}
+
 startServiceWorker();
+//changeDivStyle();
