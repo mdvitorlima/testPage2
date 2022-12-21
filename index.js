@@ -68,11 +68,23 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
 
+  var element = document.getElementById("myDiv");
+  element.style.backgroundColor = "#00FF00";
+
+    //changeDivStyle2();
+    
+    if(velocidade > velocidadeLimite)
+    {
+      var element = document.getElementById("myDiv");
+      element.style.backgroundColor = "#00FF00";
+    }
+    
     if(velocidade > velocidadeLimite)
     {
       //beep(1000, 80, function () {});
       throttle(updateThrottleCount, 3000);
     }
+    
 };
 
 const throttle = (callback, time) => {
