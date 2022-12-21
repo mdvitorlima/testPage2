@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 
 /** @const */
 const vOpts = {
@@ -73,16 +73,12 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
     
-  //objSpeed.speed2 = velocidade;
-
     
     if(velocidade > velocidadeLimite)
     {
-      var element = document.getElementById("myDiv");     
-      element.style.backgroundColor = "#00FF00";
+      document.getElementById("myDiv").style.backgroundColor = "#00FF00";
     }
-    
-    
+       
     if(velocidade > velocidadeLimite)
     {
       //beep(1000, 80, function () {});
@@ -91,17 +87,6 @@ const atualizaPosicao = (position) => {
     
 };
 
-//obj.watch(“foo”, function (oldValue, newValue) {
-//  console.log(`Value of foo changed from ${oldValue} to ${newValue}`);
-//  });
-
-/*objSpeed.watch("speed2", function (oldValue, newValue) {
-    //console.log(`Value of foo changed from ${oldValue} to ${newValue}`);
-    if(newValue > velocidadeLimite)
-    {
-       beep(1000, 80, function () {});
-    }
-});*/
 
 const throttle = (callback, time) => {
   if (throttlePause) return;
@@ -114,13 +99,12 @@ const throttle = (callback, time) => {
 };
 
 const updateThrottleCount = async () => {
-  //changeDivStyle();
   beep(1000, 80, function () {});
 };
 
 const beep = (function () {
-  var ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
-  var ctx = new ctxClass();
+  let ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
+  let ctx = new ctxClass();
   return function (duration, type, finishedCallback) {
 
       duration = +duration;
@@ -132,7 +116,7 @@ const beep = (function () {
           finishedCallback = function () {};
       }
 
-      var osc = ctx.createOscillator();
+      let osc = ctx.createOscillator();
 
       osc.type = type;
       //osc.type = "sine";
@@ -151,12 +135,7 @@ const beep = (function () {
 })();
 
  document.getElementsByTagName("button")[1].addEventListener("click", function () {
-  /*var button = this;
-  button.disabled = true;
-  beep(1000, 80, function () {
-      button.disabled = false;
-  });*/
-
+  
   changeDivStyle2();
 
 });
@@ -173,13 +152,15 @@ const startServiceWorker = () => {
 });*/
 
 function changeDivStyle(){
-  var element = document.getElementById("myDiv");
-  element.style.backgroundColor = "#00FF00";
+  //let element1 = document.getElementById("myDiv");
+  //element1.style.backgroundColor = "#00FF00";
+  document.getElementById("myDiv").style.backgroundColor = "#ff0000";
 }
 
 function changeDivStyle2(){
-  var element = document.getElementById("myDiv");
-  element.style.backgroundColor = "#FFFFFF";
+  //let element2 = document.getElementById("myDiv");
+  //element2.style.backgroundColor = "#FFFFFF";
+  document.getElementById("myDiv").style.backgroundColor = "#FFFFFF";
 }
 
 startServiceWorker();
