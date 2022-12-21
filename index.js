@@ -16,6 +16,8 @@ let velocidadeLimite = 30;
 const throttleRange = document.getElementById("throttle-range");
 const throttleTimeText = document.getElementById("throttle-time");
 
+const objSpeed = {};
+
 throttleRange.addEventListener(
   "input",
   () => {
@@ -48,6 +50,9 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
     vOpts.dom.start.textContent = 'Parar';
     vOpts.dom.start.classList.toggle('selected');
   }
+
+  objSpeed.speed2 = 0;
+
 });
 
 
@@ -67,25 +72,37 @@ const atualizaPosicao = (position) => {
 
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
-
-  var element = document.getElementById("myDiv");
-  element.style.backgroundColor = "#00FF00";
-
-    //changeDivStyle2();
     
+  objSpeed.speed2 = velocidade;
+
+    /*
     if(velocidade > velocidadeLimite)
     {
       var element = document.getElementById("myDiv");
+      
       element.style.backgroundColor = "#00FF00";
     }
+    
     
     if(velocidade > velocidadeLimite)
     {
       //beep(1000, 80, function () {});
       throttle(updateThrottleCount, 3000);
-    }
+    }*/
     
 };
+
+//obj.watch(“foo”, function (oldValue, newValue) {
+//  console.log(`Value of foo changed from ${oldValue} to ${newValue}`);
+//  });
+
+objSpeed.watch("speed2", function (oldValue, newValue) {
+    //console.log(`Value of foo changed from ${oldValue} to ${newValue}`);
+    if(newValue > velocidadeLimite)
+    {
+       beep(1000, 80, function () {});
+    }
+});
 
 const throttle = (callback, time) => {
   if (throttlePause) return;
