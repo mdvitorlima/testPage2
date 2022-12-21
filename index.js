@@ -16,7 +16,7 @@ let velocidadeLimite = 30;
 const throttleRange = document.getElementById("throttle-range");
 const throttleTimeText = document.getElementById("throttle-time");
 
-const objSpeed = {};
+//const objSpeed = {};
 
 throttleRange.addEventListener(
   "input",
@@ -51,7 +51,7 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
     vOpts.dom.start.classList.toggle('selected');
   }
 
-  objSpeed.speed2 = 0;
+  //objSpeed.speed2 = 0;
 
 });
 
@@ -73,13 +73,12 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
     
-  objSpeed.speed2 = velocidade;
+  //objSpeed.speed2 = velocidade;
 
-    /*
+    
     if(velocidade > velocidadeLimite)
     {
-      var element = document.getElementById("myDiv");
-      
+      var element = document.getElementById("myDiv");     
       element.style.backgroundColor = "#00FF00";
     }
     
@@ -88,7 +87,7 @@ const atualizaPosicao = (position) => {
     {
       //beep(1000, 80, function () {});
       throttle(updateThrottleCount, 3000);
-    }*/
+    }
     
 };
 
