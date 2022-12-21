@@ -95,13 +95,13 @@ const atualizaPosicao = (position) => {
 //  console.log(`Value of foo changed from ${oldValue} to ${newValue}`);
 //  });
 
-objSpeed.watch("speed2", function (oldValue, newValue) {
+/*objSpeed.watch("speed2", function (oldValue, newValue) {
     //console.log(`Value of foo changed from ${oldValue} to ${newValue}`);
     if(newValue > velocidadeLimite)
     {
        beep(1000, 80, function () {});
     }
-});
+});*/
 
 const throttle = (callback, time) => {
   if (throttlePause) return;
@@ -114,7 +114,7 @@ const throttle = (callback, time) => {
 };
 
 const updateThrottleCount = async () => {
-  changeDivStyle();
+  //changeDivStyle();
   beep(1000, 80, function () {});
 };
 
