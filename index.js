@@ -64,7 +64,7 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
 
   //objSpeed.speed2 = 0;
   //document.querySelector('#jsVersion').textContent = "1.8";
-  vOpts.dom.version.textContent = "1.8";
+  vOpts.dom.version.textContent = "1.9";
 
 });
 
@@ -87,18 +87,17 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
 
-    
-    
+        
     if(Math.round(velocidade) > velocidadeLimite)
     {
       document.getElementById("myDiv").style.backgroundColor = "#00FF00";
     }
        
-    if(Math.round(velocidade) > velocidadeLimite)
+    /*if(Math.round(velocidade) > velocidadeLimite)
     {
       //beep(1000, 80, function () {});
       throttle(updateThrottleCount, 3000);
-    }
+    }*/
     
 };
 
@@ -113,11 +112,11 @@ const throttle = (callback, time) => {
   }, time);
 };
 
-const updateThrottleCount = async () => {
-  beep(1000, 80, function () {});
-};
+//const updateThrottleCount = async () => {
+//  beep(1000, 80, function () {});
+//};
 
-const beep = (function () {
+/*const beep = (function () {
   let ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
   let ctx = new ctxClass();
   return function (duration, type, finishedCallback) {
@@ -147,7 +146,7 @@ const beep = (function () {
       }, duration);
 
   };
-})();
+})();*/
 
  document.getElementsByTagName("button")[1].addEventListener("click", function () {
   
