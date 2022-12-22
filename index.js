@@ -1,4 +1,4 @@
-//'use strict';
+'use strict';
 
 /** @const */
 const vOpts = {
@@ -6,6 +6,7 @@ const vOpts = {
     body: document.querySelector('body'),
     start: document.querySelector('#inicio'),
     readout: document.querySelector('#readout'),
+    version: document.querySelector('#jsVersion')
   },
   watchId: null,
   wakeLock: null
@@ -17,6 +18,16 @@ const throttleRange = document.getElementById("throttle-range");
 const throttleTimeText = document.getElementById("throttle-time");
 
 //const objSpeed = {};
+
+window.addEventListener(
+  'error',
+  (error) => {
+    // Event {isTrusted: true, type: 'error', target: img, …}
+    //console.log('error: ', error.message);
+    alert('error: ' +  error.message);
+  },
+  true
+);
 
 throttleRange.addEventListener(
   "input",
@@ -52,7 +63,8 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
   }
 
   //objSpeed.speed2 = 0;
-  document.querySelector('#jsVersion').textContent = "1.8";
+  //document.querySelector('#jsVersion').textContent = "1.8";
+  vOpts.dom.version.textContent = "1.8";
 
 });
 
@@ -70,9 +82,11 @@ const IniciarWakeLock = () => {
 const atualizaPosicao = (position) => {
 
   let velocidade = position.coords.speed;
+  //velocidade2 = position.coords.speed;
 
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
+
     
     
     if(Math.round(velocidade) > velocidadeLimite)
