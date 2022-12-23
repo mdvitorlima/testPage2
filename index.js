@@ -64,7 +64,7 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
 
   //objSpeed.speed2 = 0;
   //document.querySelector('#jsVersion').textContent = "1.8";
-  vOpts.dom.version.textContent = "1.9";
+  vOpts.dom.version.textContent = "2.1";
 
 });
 
@@ -87,11 +87,19 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
 
-        
-    if(Math.round(velocidade) > Math.round(velocidadeLimite))
+    if(Math.round(velocidade) > 36)
     {
       document.getElementById("myDiv").style.backgroundColor = "#00FF00";
     }
+    else
+    {
+      document.getElementById("myDiv").style.backgroundColor = "#FFFFFF";
+    }
+        
+    /*if(Math.round(velocidade) > Math.round(velocidadeLimite))
+    {
+      document.getElementById("myDiv").style.backgroundColor = "#00FF00";
+    }*/
        
     /*if(Math.round(velocidade) > velocidadeLimite)
     {
@@ -102,7 +110,7 @@ const atualizaPosicao = (position) => {
 };
 
 
-const throttle = (callback, time) => {
+/*const throttle = (callback, time) => {
   if (throttlePause) return;
 
   throttlePause = true;
@@ -110,7 +118,7 @@ const throttle = (callback, time) => {
     callback();
     throttlePause = false;
   }, time);
-};
+};*/
 
 //const updateThrottleCount = async () => {
 //  beep(1000, 80, function () {});
