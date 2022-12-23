@@ -12,8 +12,8 @@ const vOpts = {
   wakeLock: null
 };
 
-let throttlePause;
-let velocidadeLimite = 30;
+var throttlePause;
+var velocidadeLimite = 30;
 const throttleRange = document.getElementById("throttle-range");
 const throttleTimeText = document.getElementById("throttle-time");
 
@@ -88,7 +88,7 @@ const atualizaPosicao = (position) => {
     velocidade * 3.6);
 
         
-    if(Math.round(velocidade) > velocidadeLimite)
+    if(Math.round(velocidade) > Math.round(velocidadeLimite))
     {
       document.getElementById("myDiv").style.backgroundColor = "#00FF00";
     }
