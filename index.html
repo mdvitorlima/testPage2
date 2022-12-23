@@ -9,8 +9,17 @@
   <link rel="icon" href="/testPage2/images/veloc1.png">
   <link rel="manifest" href="/testPage2/manifest.json">
   <link rel="stylesheet" href="/testPage2/index.css">
+
+  <style>
+    .divc {
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+}
+  </style>
 </head>
 <body>
+  <div class="divc" onmousemove="myFunctionMove(event)"></div>
   <div id="readout">...</div>
   <div id="readoutUnits">
     <button id="inicio">Iniciar!!</button>
@@ -24,8 +33,10 @@
     <div id="myDiv">Singnal DIV</div>
     <br/><br/><br/>
     <div id="jsVersion"></div>
+    <br/>
+    <p id="demo"></p>
   </div>
-
+  
   <script src="/testPage2/index.js"></script>
 </body>
 </html>

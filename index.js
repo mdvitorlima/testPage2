@@ -19,6 +19,23 @@ const throttleTimeText = document.getElementById("throttle-time");
 
 //const objSpeed = {};
 
+function myFunctionMove(e) {
+  var x = e.clientX;
+  var y = e.clientY;
+
+  var coor = "Coordinates: (" + x + "," + y + ")";
+  document.getElementById("demo").innerHTML = coor;
+
+  if(y > 130)
+  {
+     document.getElementById("myDiv").style.backgroundColor = "#00FF00";
+  }
+  else
+  {
+    document.getElementById("myDiv").style.backgroundColor = "#FFFFFF";
+  }
+}
+
 window.addEventListener(
   'error',
   (error) => {
@@ -86,10 +103,11 @@ const atualizaPosicao = (position) => {
 
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
-
-    if(Math.round(velocidade) > 36)
+    
+    if(Math.round(velocidade * 3.6) > 36)
     {
       document.getElementById("myDiv").style.backgroundColor = "#00FF00";
+      beep(1000, 80, function () {});
     }
     else
     {
