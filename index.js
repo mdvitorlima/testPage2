@@ -26,14 +26,14 @@ function myFunctionMove(e) {
   var coor = "Coordinates: (" + x + "," + y + ")";
   document.getElementById("demo").innerHTML = coor;
 
-  if(y > 130)
+ /* if(y > 130)
   {
      document.getElementById("myDiv").style.backgroundColor = "#00FF00";
   }
   else
   {
     document.getElementById("myDiv").style.backgroundColor = "#FFFFFF";
-  }
+  } */
 }
 
 window.addEventListener(
