@@ -81,7 +81,7 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
 
   //objSpeed.speed2 = 0;
   //document.querySelector('#jsVersion').textContent = "1.8";
-  vOpts.dom.version.textContent = "2.3";
+  vOpts.dom.version.textContent = "2.4";
 
 });
 
@@ -106,7 +106,8 @@ const atualizaPosicao = (position) => {
     
     if(Math.round(velocidade * 3.6) > velocidadeLimite)
     {
-      document.getElementById("myDiv").style.backgroundColor = "#00FF00";
+      //document.getElementById("myDiv").style.backgroundColor = "#00FF00";
+      document.getElementById("myDiv").style.backgroundColor = "#FF0000";
       beep(1000, 80, function () {});
     }
     else
