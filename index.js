@@ -104,7 +104,7 @@ const atualizaPosicao = (position) => {
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
     
-    if(Math.round(velocidade * 3.6) > 36)
+    if(Math.round(velocidade * 3.6) > velocidadeLimite)
     {
       document.getElementById("myDiv").style.backgroundColor = "#00FF00";
       beep(1000, 80, function () {});
@@ -142,7 +142,7 @@ const atualizaPosicao = (position) => {
 //  beep(1000, 80, function () {});
 //};
 
-/*const beep = (function () {
+const beep = (function () {
   let ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
   let ctx = new ctxClass();
   return function (duration, type, finishedCallback) {
@@ -172,7 +172,7 @@ const atualizaPosicao = (position) => {
       }, duration);
 
   };
-})();*/
+})();
 
  document.getElementsByTagName("button")[1].addEventListener("click", function () {
   
