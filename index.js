@@ -81,7 +81,7 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
 
   //objSpeed.speed2 = 0;
   //document.querySelector('#jsVersion').textContent = "1.8";
-  vOpts.dom.version.textContent = "2.2";
+  vOpts.dom.version.textContent = "2.3";
 
 });
 
