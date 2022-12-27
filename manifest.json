@@ -1,13 +1,13 @@
 {
-  "name": "Veloc1",
-  "short_name": "Veloc",
-  "description": "Teste.",
+  "name": "Speed Control",
+  "short_name": "scontrol",
+  "description": "help to keep the right speed",
   "start_url": "/testPage2/",
   "theme_color": "#f1f1f1",
   "background_color": "#f1f1f1",
   "icons": [{
-    "src": "/testPage2/images/veloc1.png",
-    "sizes": "512x512",
+    "src": "/testPage2/images/veloc2.png",
+    "sizes": "530x530",
     "type": "image/png"
   }],
   "display": "standalone"

@@ -8,7 +8,7 @@ var GHPATH = '/testPage2';
 var URLS = [    
   `${GHPATH}/`,
   `${GHPATH}/index.html`,
-  `${GHPATH}/images/veloc1.png`,
+  `${GHPATH}/images/veloc2.png`,
 ]
 
 addEventListener('install', event => {

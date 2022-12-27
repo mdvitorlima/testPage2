@@ -17,30 +17,10 @@ var velocidadeLimite = 30;
 const throttleRange = document.getElementById("throttle-range");
 const throttleTimeText = document.getElementById("throttle-time");
 
-//const objSpeed = {};
-
-function myFunctionMove(e) {
-  var x = e.clientX;
-  var y = e.clientY;
-
-  var coor = "Coordinates: (" + x + "," + y + ")";
-  document.getElementById("demo").innerHTML = coor;
-
- /* if(y > 130)
-  {
-     document.getElementById("myDiv").style.backgroundColor = "#00FF00";
-  }
-  else
-  {
-    document.getElementById("myDiv").style.backgroundColor = "#FFFFFF";
-  } */
-}
 
 window.addEventListener(
   'error',
   (error) => {
-    // Event {isTrusted: true, type: 'error', target: img, …}
-    //console.log('error: ', error.message);
     alert('error: ' +  error.message);
   },
   true
@@ -79,8 +59,6 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
     vOpts.dom.start.classList.toggle('selected');
   }
 
-  //objSpeed.speed2 = 0;
-  //document.querySelector('#jsVersion').textContent = "1.8";
   vOpts.dom.version.textContent = "2.4";
 
 });
@@ -99,20 +77,20 @@ const IniciarWakeLock = () => {
 const atualizaPosicao = (position) => {
 
   let velocidade = position.coords.speed;
-  //velocidade2 = position.coords.speed;
 
   vOpts.dom.readout.textContent = Math.round(
     velocidade * 3.6);
     
     if(Math.round(velocidade * 3.6) > velocidadeLimite)
     {
-      //document.getElementById("myDiv").style.backgroundColor = "#00FF00";
-      document.getElementById("myDiv").style.backgroundColor = "#FF0000";
+      document.getElementById("divAlert").style.backgroundColor = "#FF0000";
+      document.getElementById("divAlert").textContent = "VELOCIDADE MAX ATINGIDA";
       beep(1000, 80, function () {});
     }
     else
     {
-      document.getElementById("myDiv").style.backgroundColor = "#FFFFFF";
+      document.getElementById("divAlert").style.backgroundColor = "#f1f1f1";
+      document.getElementById("divAlert").textContent = "";
     }
         
     /*if(Math.round(velocidade) > Math.round(velocidadeLimite))
@@ -175,11 +153,10 @@ const beep = (function () {
   };
 })();
 
- document.getElementsByTagName("button")[1].addEventListener("click", function () {
-  
-  changeDivStyle2();
-
+document.getElementsByTagName("button")[1].addEventListener("click", function () {
+  beep(1000, 80, function () {});
 });
+
 
 const startServiceWorker = () => {
   navigator.serviceWorker.register('/testPage2/service-worker2.js', {
@@ -187,22 +164,4 @@ const startServiceWorker = () => {
   });
 }
 
-/*window.addEventListener('mousemove', (e) => {
-  //alert('oi!!');
-  throttle(updateThrottleCount, 3000);
-});*/
-
-function changeDivStyle(){
-  //let element1 = document.getElementById("myDiv");
-  //element1.style.backgroundColor = "#00FF00";
-  document.getElementById("myDiv").style.backgroundColor = "#ff0000";
-}
-
-function changeDivStyle2(){
-  //let element2 = document.getElementById("myDiv");
-  //element2.style.backgroundColor = "#FFFFFF";
-  document.getElementById("myDiv").style.backgroundColor = "#FFFFFF";
-}
-
 startServiceWorker();
-//changeDivStyle();
