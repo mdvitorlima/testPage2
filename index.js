@@ -87,7 +87,7 @@ const atualizaPosicao = (position) => {
       document.getElementById("divAlert").style.color = "#FFFFFF";
       document.getElementById("divAlert").style.fontSize = 22;      
       //document.getElementById("divAlert").textContent = "VELOCIDADE MAX ATINGIDA";
-      document.getElementById("textAlert").textContent = "VELOCIDADE MAX ATINGIDA 2";
+      document.getElementById("textAlert2").textContent = "VELOCIDADE MAX ATINGIDA 2";
       beep(1000, 80, function () {});
     }
     else
