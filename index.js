@@ -16,8 +16,8 @@ var velocidadeLimite = 30;
 const throttleRange = document.getElementById("throttle-range");
 const throttleTimeText = document.getElementById("throttle-time");
 
-const watchId = null;
-const wakeLock = null;
+var watchId = null;
+var wakeLock = null;
 
 const start = document.querySelector('#inicio');
 //const readout = document.querySelector('#readout');
