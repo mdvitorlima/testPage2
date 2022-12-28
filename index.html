@@ -11,9 +11,29 @@
   <link rel="stylesheet" href="/testPage2/index.css">
   
   <style>
-    .divc {
-  height: 100px;
-  }
+
+    .divAlert 
+    { 
+      /*height: 100px;
+      position: relative;
+      width: 100%; */
+    }
+
+    .textAlert 
+    { 
+     /* margin: 0;
+      position: absolute;               
+      top: 50%;                         
+      /*transform: translate(0, -50%);  
+      left: 50%; */
+    }  
+    
+    .speedFont 
+    { 
+      font-size: 60px;
+    }
+    
+    
   </style>
 </head>
 <body>
@@ -23,17 +43,19 @@
     <button type="button">Beep!!</button>   
     <br/><br/><br/><br/>
     <input type="range" id="throttle-range" value="30" min="1" max="60" step="1"><br>
-    <br/><br/><br/><br/>
-    <div>V2.4</div>
-    <span id="throttle-time">30</span>
+    <br/><br/>
+    <span class="speedFont" id="throttle-time">30</span>
     <br/><br/><br/>
-    <div id="divAlert"></div>
+    <div class="divAlert" id="divAlert">
+       <div class="textAlert" id="textAlert2"></div>
+    </div>
     <br/><br/><br/>
     <div id="jsVersion"></div>
     <br/>
     <p id="demo"></p>
   </div>
   
+  <script src="/testPage2/audio.js"></script>
   <script src="/testPage2/index.js"></script>
 </body>
 </html>

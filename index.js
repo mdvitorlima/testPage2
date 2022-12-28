@@ -53,14 +53,14 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
     vOpts.watchId = navigator.geolocation.watchPosition(atualizaPosicao,
       null, options);
 
-      IniciarWakeLock();
-
+    IniciarWakeLock();
+    
     vOpts.dom.start.textContent = 'Parar';
     vOpts.dom.start.classList.toggle('selected');
   }
-
-  vOpts.dom.version.textContent = "2.4";
-
+  
+  vOpts.dom.version.textContent = "2.5";
+  
 });
 
 
@@ -84,77 +84,27 @@ const atualizaPosicao = (position) => {
     if(Math.round(velocidade * 3.6) > velocidadeLimite)
     {
       document.getElementById("divAlert").style.backgroundColor = "#FF0000";
-      document.getElementById("divAlert").textContent = "VELOCIDADE MAX ATINGIDA";
+      document.getElementById("divAlert").style.color = "#FFFFFF";
+      document.getElementById("divAlert").style.fontSize = 22;      
+      //document.getElementById("divAlert").textContent = "VELOCIDADE MAX ATINGIDA";
+      document.getElementById("textAlert").textContent = "VELOCIDADE MAX ATINGIDA 2";
       beep(1000, 80, function () {});
     }
     else
     {
       document.getElementById("divAlert").style.backgroundColor = "#f1f1f1";
-      document.getElementById("divAlert").textContent = "";
+      //document.getElementById("divAlert").textContent = "";
     }
-        
-    /*if(Math.round(velocidade) > Math.round(velocidadeLimite))
-    {
-      document.getElementById("myDiv").style.backgroundColor = "#00FF00";
-    }*/
-       
-    /*if(Math.round(velocidade) > velocidadeLimite)
-    {
-      //beep(1000, 80, function () {});
-      throttle(updateThrottleCount, 3000);
-    }*/
     
 };
 
-
-/*const throttle = (callback, time) => {
-  if (throttlePause) return;
-
-  throttlePause = true;
-  setTimeout(() => {
-    callback();
-    throttlePause = false;
-  }, time);
-};*/
-
-//const updateThrottleCount = async () => {
-//  beep(1000, 80, function () {});
-//};
-
-const beep = (function () {
-  let ctxClass = window.audioContext ||window.AudioContext || window.AudioContext || window.webkitAudioContext
-  let ctx = new ctxClass();
-  return function (duration, type, finishedCallback) {
-
-      duration = +duration;
-
-      // Only 0-4 are valid types.
-      type = (type % 5) || 0;
-      
-      if (typeof finishedCallback != "function") {
-          finishedCallback = function () {};
-      }
-
-      let osc = ctx.createOscillator();
-
-      osc.type = type;
-      //osc.type = "sine";
-      
-      osc.connect(ctx.destination);
-      if (osc.noteOn) osc.noteOn(0);
-      if (osc.start) osc.start();
-      
-      setTimeout(function () {
-          if (osc.noteOff) osc.noteOff(0);
-          if (osc.stop) osc.stop();
-          finishedCallback();
-      }, duration);
-
-  };
-})();
-
 document.getElementsByTagName("button")[1].addEventListener("click", function () {
   beep(1000, 80, function () {});
+
+      document.getElementById("divAlert").style.backgroundColor = "#FF0000";
+      document.getElementById("divAlert").style.color = "#FFFFFF";
+      document.getElementById("divAlert").style.fontSize = 22;      
+      document.getElementById("textAlert2").textContent = "VELOCIDADE MAX ATINGIDA 2";
 });
 
 
