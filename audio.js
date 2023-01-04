@@ -30,3 +30,31 @@ const beep = (function () {
     };
   })();
   
+  const myAudioContext = new AudioContext();
+  
+  function beep2(duration, frequency){
+    return new Promise((resolve, reject) => {      
+
+        try{
+            let osc1 = myAudioContext.createOscillator();
+            let g1 = myAudioContext.createGain();
+            osc1.connect(g1);
+
+            osc1.type= "square";
+            osc1.frequency.value = frequency;
+                       
+            g1.connect(myAudioContext.destination);
+
+            g1.gain.value = 1;
+
+            osc1.start(myAudioContext.currentTime);
+            osc1.stop(myAudioContext.currentTime + duration);
+
+            osc1.onended = () => {
+                resolve();
+            };
+        }catch(error){
+            reject(error);
+        }
+    });
+}

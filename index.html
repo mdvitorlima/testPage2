@@ -11,22 +11,6 @@
   <link rel="stylesheet" href="/testPage2/index.css">
   
   <style>
-
-    .divAlert 
-    { 
-      /*height: 100px;
-      position: relative;
-      width: 100%; */
-    }
-
-    .textAlert 
-    { 
-     /* margin: 0;
-      position: absolute;               
-      top: 50%;                         
-      /*transform: translate(0, -50%);  
-      left: 50%; */
-    }  
     
     .speedFont 
     { 
@@ -37,16 +21,16 @@
   </style>
 </head>
 <body>
-  <div id="readout">...</div>
-  <div id="readoutUnits">
-    <button id="inicio">Iniciar!!</button>
+  <div id="current-speed">...</div>
+  <div>
+    <button id="btn-start">Start</button>
     <button type="button">Beep!!</button>   
     <br/><br/><br/><br/>
-    <input type="range" id="throttle-range" value="30" min="1" max="60" step="1"><br>
+    <input type="range" id="max-speed" value="30" min="1" max="60" step="1"><br>
     <br/><br/>
-    <span class="speedFont" id="throttle-time">30</span>
+    <span class="speedFont" id="max-speed-label">30</span>
     <br/><br/><br/>
-    <div class="divAlert" id="divAlert">
+    <div id="div-alert">
     </div>
     <br/><br/><br/>
     <div id="jsVersion"></div>

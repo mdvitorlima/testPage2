@@ -1,28 +1,5 @@
-'use strict';
-
-/** @const */
-const vOpts = {
-  dom: {
-    //start: document.querySelector('#inicio'),
-    //readout: document.querySelector('#readout'),
-    //version: document.querySelector('#jsVersion')
-  },
-  //watchId: null,
-  //wakeLock: null
-};
-
-var throttlePause;
-var velocidadeLimite = 30;
-const throttleRange = document.getElementById("throttle-range");
-const throttleTimeText = document.getElementById("throttle-time");
-
 var watchId = null;
 var wakeLock = null;
-
-const start = document.querySelector('#inicio');
-//const readout = document.querySelector('#readout');
-const version = document.querySelector('#jsVersion');
-
 
 window.addEventListener(
   'error',
@@ -32,16 +9,16 @@ window.addEventListener(
   true
 );
 
-throttleRange.addEventListener(
+document.getElementById("max-speed").addEventListener(
   "input",
   () => {
-    throttleTimeText.innerHTML = throttleRange.value;
-    velocidadeLimite = throttleRange.value;
+    document.getElementById("max-speed-label").innerHTML = document.getElementById("max-speed").value;
   },
   false
 );
 
-document.querySelector('#inicio').addEventListener('click', (event) => {
+document.querySelector('#btn-start').addEventListener('click', (event) => {
+
   if (watchId) {
     navigator.geolocation.clearWatch(watchId);
 
@@ -50,26 +27,21 @@ document.querySelector('#inicio').addEventListener('click', (event) => {
     }
     
     watchId = null;
-    start.textContent = 'Iniciar';
-    start.classList.toggle('selected');
+    event.target.textContent = "Start!";
+    event.target.classList.toggle('selected');
   } else {
     const options = {
       enableHighAccuracy: true
     };
     
-    watchId = navigator.geolocation.watchPosition(atualizaPosicao,
-      null, options);
+    watchId = navigator.geolocation.watchPosition(checkSpeed, null, options);
 
     IniciarWakeLock();
-    
-    start.textContent = 'Parar';
-    start.classList.toggle('selected');
+    event.target.textContent = 'Stop';
+    event.target.classList.toggle('selected');
   }
   
-  version.textContent = "2.5";
-  
 });
-
 
 const IniciarWakeLock = () => {
   try {
@@ -81,36 +53,40 @@ const IniciarWakeLock = () => {
   }
 }
 
-const atualizaPosicao = (position) => {
+const checkSpeed = (position) => {
 
-  let velocidade = position.coords.speed;
+  let currentSpeed_Kmh =  position.coords.speed * 3.6;
+  let maxSpeed_Kmh = document.getElementById("max-speed").value;
+  
+  document.querySelector('#current-speed').textContent = Math.round(currentSpeed_Kmh);
 
-  document.querySelector('#readout').textContent = Math.round(velocidade * 3.6);
+  let div_alert = document.getElementById("div-alert");
     
-    if(Math.round(velocidade * 3.6) > velocidadeLimite)
+    if(currentSpeed_Kmh > maxSpeed_Kmh)
     {
-      document.getElementById("divAlert").style.backgroundColor = "#FF0000";
-      document.getElementById("divAlert").style.color = "#FFFFFF";
-      document.getElementById("divAlert").style.fontSize = 22;      
-      document.getElementById("divAlert").textContent = "VELOCIDADE MAX ATINGIDA";
-      beep(1000, 80, function () {});
+      div_alert.style.backgroundColor = "#FF0000";
+      div_alert.style.color = "#FFFFFF";
+      div_alert.style.fontSize = 22;      
+      div_alert.textContent = "VELOCIDADE MAX ATINGIDA";
+      beep2(0.2, 2600);
     }
     else
     {
-      document.getElementById("divAlert").style.backgroundColor = "#f1f1f1";
-      document.getElementById("divAlert").textContent = "";
+      div_alert.style.backgroundColor = "#f1f1f1";
+      div_alert.textContent = "";
     }
     
 };
 
-document.getElementsByTagName("button")[1].addEventListener("click", function () {
-  beep(1000, 80, function () {});
 
-      document.getElementById("divAlert").style.backgroundColor = "#FF0000";
-      document.getElementById("divAlert").style.color = "#FFFFFF";
-      document.getElementById("divAlert").style.fontSize = 22; 
-      document.getElementById("divAlert").textContent = "VELOCIDADE MAX ATINGIDA";     
-});
+document.getElementsByTagName("button")[1].addEventListener("click", function () {
+  beep2(0.2, 2600);
+
+      //document.getElementById("divAlert").style.backgroundColor = "#FF0000";
+      //document.getElementById("divAlert").style.color = "#FFFFFF";
+      //document.getElementById("divAlert").style.fontSize = 22; 
+      //document.getElementById("divAlert").textContent = "VELOCIDADE MAX ATINGIDA";     
+}); 
 
 
 const startServiceWorker = () => {
